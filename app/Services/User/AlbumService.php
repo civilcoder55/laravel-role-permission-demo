@@ -2,6 +2,7 @@
 
 namespace App\Services\User;
 
+use App\Models\Album;
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -17,6 +18,12 @@ class AlbumService
         $user = auth()->user();
         return $user->albums()->paginate(15);
     }
+
+    public function getPublicAlbums()
+    {
+        return Album::where(['private' => 0])->cursorPaginate(16);
+    }
+
 
     public function storeAlbum($request)
     {

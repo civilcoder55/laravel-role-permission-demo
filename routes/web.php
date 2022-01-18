@@ -21,14 +21,8 @@ Route::group(['middleware' => 'auth', 'as' => 'user.', 'namespace' => 'User'], f
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::prefix('albums')->group(function () {
-        Route::get('/', 'AlbumController@index')->name('albums.index');
-        Route::get('/create', 'AlbumController@create')->name('albums.create');
-        Route::post('/create', 'AlbumController@store')->name('albums.store');
-        Route::get('/{album}/edit', 'AlbumController@edit')->name('albums.edit');
-        Route::post('/{album}/edit', 'AlbumController@update')->name('albums.update');
-        Route::delete('/{album}', 'AlbumController@destroy')->name('albums.destroy');
-    });
+    Route::resource('albums', 'AlbumController');
+
 
     Route::prefix('profile')->group(function () {
         Route::get('/', 'ProfileController@show')->name('profile.show');

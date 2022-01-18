@@ -48,7 +48,13 @@
                                 <td>{{$album->updated_at->diffForHumans()}}</td>
                                 <td>
                                     <a href="{{ route('user.albums.edit',$album->id) }}" class="btn btn-secondary btn-sm href-btn" title="edit album"><i class="fas fa-edit"></i></a>
-                                    <button class="btn btn-secondary btn-sm" title="delete album"><i class="fas fa-trash"></i></button>
+                                    <button class="btn btn-secondary btn-sm" title="delete album" onclick="document.getElementById('delete-album-{{$album->id}}').submit();"><i class="fas fa-trash"></i></button>
+
+                                    <form id="delete-album-{{$album->id}}" action="{{ route('user.albums.destroy',$album->id) }}" method="POST" class="d-none">
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+
                                 </td>
                             </tr>
                             @endforeach

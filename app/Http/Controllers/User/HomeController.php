@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Services\User\AlbumService;
 
 class HomeController extends Controller
 {
+    protected $service;
+
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AlbumService $service)
     {
-        // $this->middleware('auth');
+        $this->service = $service;
     }
 
     /**
@@ -24,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.home');
+        $albums = $this->service->getPublicAlbums();
+        return view('user.home', compact('albums'));
     }
 }

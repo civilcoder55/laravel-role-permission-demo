@@ -29,7 +29,7 @@ class AlbumsRequest extends FormRequest
             'description' => ['required', 'string'],
         ];
 
-        if ($this->method() == 'POST') {
+        if ($this->method() == 'PUT') {
             $rules['cover'] = ['image', 'mimes:jpeg,png,jpg'];
         } else {
             $rules['cover'] = ['required', 'image', 'mimes:jpeg,png,jpg'];

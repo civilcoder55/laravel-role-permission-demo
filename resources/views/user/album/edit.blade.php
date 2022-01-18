@@ -24,6 +24,7 @@
                 <div class="card-body ">
                     <form method="POST" action="{{ route('user.albums.update',$album->id) }}" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="form-group">
                             <label for="name">Album Name</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $album->name}}" required autocomplete="name">
