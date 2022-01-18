@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth', 'as' => 'user.', 'namespace' => 'User'], function () {
+    Route::redirect('/', '/home');
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::prefix('profile')->group(function () {
+        Route::get('/', 'ProfileController@show')->name('profile.show');
+        Route::post('/', 'ProfileController@update')->name('profile.update');
+        Route::post('password', 'ProfileController@updatePassword')->name('profile.update.password');
+    });
+});

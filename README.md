@@ -15,7 +15,7 @@
 - [*] Registration page (Name, Email, Password).
 - [*] Login page (Email, Password).
 - [ ] Home page for albums listing (only show public albums).
-- [ ] Profile page for logged user to edit personal info.
+- [*] Profile page for logged user to edit personal info.
 - [ ] Albums page for logged user to albums management (view, add, edit, delete)
 - [ ] User could add two types of albums (public/private).
 
