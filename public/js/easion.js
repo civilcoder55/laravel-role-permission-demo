@@ -34,4 +34,18 @@ $(document).ready(function(){
     // Dev utilities
     // $("header.dash-toolbar .menu-toggle").click();
     // $(".searchbox-toggle").click();
+    
+      $('input[type="file"]').change(function(e) {
+        var fileName = e.target.files[0].name;
+        $("#cover-label").html(fileName);
+      
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          // get loaded data and render thumbnail.
+          document.getElementById("preview").hidden = false;
+          document.getElementById("preview").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+      });
 });
