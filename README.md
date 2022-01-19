@@ -9,6 +9,37 @@
   </p>
 </p>
 
+## Usage
+
+1. Clone the repo
+
+  ```sh
+  git clone https://github.com/civilcoder55/laravel-task.git
+  ```
+
+2. install composer packages
+
+  ```sh
+  composer install
+  ```
+
+3. update env file with database connection
+
+4. migrate database
+
+  ```sh
+  php artisan migrate
+  ```
+5. seed database
+
+  ```sh
+  php artisan db:seed
+  ```
+
+6. access website at and login in with  super@admin.com:Password123@
+  ```sh
+  http://localhost:8000 
+  ```
 
 ## USER TO DO
 
