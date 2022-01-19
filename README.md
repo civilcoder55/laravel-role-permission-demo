@@ -21,9 +21,9 @@
 
 ## ADMIN TO DO
 
-- [ ] Login page (Email, Password).
-- [ ] Dashboard page to show website stats (albums count, users count, etc…).
-- [ ] Roles page for roles & permissions management (view, add, edit, delete).
-- [ ] System admins page for admins management (view, add, edit, delete).
-- [ ] Registered users page for user management (and manage their albums).
-- [ ] Admin could delete not proper album.
+- [*] Login page (Email, Password).
+- [*] Dashboard page to show website stats (albums count, users count, etc…).
+- [*] Roles page for roles & permissions management (view, add, edit, delete).
+- [*] System admins page for admins management (view, add, edit, delete).
+- [*] Registered users page for user management (and manage their albums).
+- [*] Admin could delete not proper album.
