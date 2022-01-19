@@ -43,18 +43,18 @@
 
 ## USER TO DO
 
-- [*] Registration page (Name, Email, Password).
-- [*] Login page (Email, Password).
-- [*] Home page for albums listing (only show public albums).
-- [*] Profile page for logged user to edit personal info.
-- [*] Albums page for logged user to albums management (view, add, edit, delete)
-- [*] User could add two types of albums (public/private).
+- [x] Registration page (Name, Email, Password).
+- [x] Login page (Email, Password).
+- [x] Home page for albums listing (only show public albums).
+- [x] Profile page for logged user to edit personal info.
+- [x] Albums page for logged user to albums management (view, add, edit, delete)
+- [x] User could add two types of albums (public/private).
 
 ## ADMIN TO DO
 
-- [*] Login page (Email, Password).
-- [*] Dashboard page to show website stats (albums count, users count, etc…).
-- [*] Roles page for roles & permissions management (view, add, edit, delete).
-- [*] System admins page for admins management (view, add, edit, delete).
-- [*] Registered users page for user management (and manage their albums).
-- [*] Admin could delete not proper album.
+- [x] Login page (Email, Password).
+- [x] Dashboard page to show website stats (albums count, users count, etc…).
+- [x] Roles page for roles & permissions management (view, add, edit, delete).
+- [x] System admins page for admins management (view, add, edit, delete).
+- [x] Registered users page for user management (and manage their albums).
+- [x] Admin could delete not proper album.
