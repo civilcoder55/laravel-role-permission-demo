@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\User\AlbumService;
+use App\Services\AlbumService;
 
 class HomeController extends Controller
 {
@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $albums = $this->service->getPublicAlbums();
+
         return view('user.home', compact('albums'));
     }
 }

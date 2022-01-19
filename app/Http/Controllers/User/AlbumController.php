@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\AlbumsRequest;
 use App\Models\Album;
-use App\Services\User\AlbumService;
+use App\Services\AlbumService;
 
 
 class AlbumController extends Controller
@@ -47,6 +47,7 @@ class AlbumController extends Controller
     public function store(AlbumsRequest $request)
     {
         $this->service->storeAlbum($request);
+
         return redirect()->route('user.albums.index')->with('status', "Album created successfully");
     }
 
@@ -94,7 +95,7 @@ class AlbumController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Album $album)
-    {   
+    {
         $this->authorize('delete', $album);
         $album->delete();
         return redirect()->route('user.albums.index')->with('status', "Album deleted successfully");

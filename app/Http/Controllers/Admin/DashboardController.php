@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\Admin\UserService;
-use App\Services\User\AlbumService;
-use Illuminate\Http\Request;
+use App\Services\UserService;
+use App\Services\AlbumService;
 
 class DashboardController extends Controller
 {

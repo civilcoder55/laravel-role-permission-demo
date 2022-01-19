@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UsersRequest;
 use App\Models\Role;
 use App\Models\User;
-use App\Services\Admin\UserService;
-use Illuminate\Http\Request;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
@@ -43,6 +42,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
+
         return view('admin.user.create', compact('roles'));
     }
 
@@ -68,8 +68,10 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
+
         $user_roles_ids = $this->service->getUserRolesIds($user);
-        return view('admin.user.edit', compact(['user','roles','user_roles_ids']));
+
+        return view('admin.user.edit', compact(['user', 'roles', 'user_roles_ids']));
     }
 
     /**
@@ -95,6 +97,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+
         return redirect()->route('admin.users.index')->with('status', "User deleted successfully");
     }
 }

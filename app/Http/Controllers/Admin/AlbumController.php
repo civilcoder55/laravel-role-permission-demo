@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\AlbumsRequest;
 use App\Models\Album;
-use App\Services\User\AlbumService;
-use Illuminate\Http\Request;
+use App\Services\AlbumService;
 
 class AlbumController extends Controller
 {

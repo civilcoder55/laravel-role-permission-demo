@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    
+
     /**
      * Display the specified resource.
      *
@@ -30,12 +30,17 @@ class ProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request)
     {
-        auth()->user()->update($request->validated());
+        /**
+         * @var User
+         */
+        $user = auth()->user();
+
+        $user->update($request->validated());
+
         return redirect()->route('user.profile.show')->with('status', 'Your information updated successfully');
-    
     }
 
-     /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -44,9 +49,13 @@ class ProfileController extends Controller
      */
     public function updatePassword(UpdatePasswordRequest $request)
     {
-        auth()->user()->update(['password' => Hash::make($request->password)]);
-        return redirect()->route('user.profile.show')->with('status', 'Your password updated successfully');
-    
-    }
+        /**
+         * @var User
+         */
+        $user = auth()->user();
 
+        $user->update(['password' => Hash::make($request->password)]);
+
+        return redirect()->route('user.profile.show')->with('status', 'Your password updated successfully');
+    }
 }
