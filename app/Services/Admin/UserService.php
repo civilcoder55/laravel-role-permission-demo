@@ -11,7 +11,17 @@ class UserService
 
     public function getAllUsers()
     {
-        return User::cursorPaginate(16);
+        return User::where('super_admin', 0)->cursorPaginate(16);
+    }
+
+    public function getAllUsersCount()
+    {
+        return User::where('super_admin', 0)->count();
+    }
+    
+    public function getAllAdmins()
+    {
+        return DB::table('users');
     }
 
     public function getUserRolesIds($user)
