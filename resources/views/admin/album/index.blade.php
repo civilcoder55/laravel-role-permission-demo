@@ -33,6 +33,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Private</th>
+                                <th scope="col">User Email</th>
                                 <th scope="col">Created Time</th>
                                 <th scope="col">Updated Time</th>
                                 <th scope="col">Actions</th>
@@ -45,6 +46,7 @@
                                 <td>{{$album->name}}</td>
                                 <td>{{$album->description}}</td>
                                 <td><input type="checkbox" {{ $album->private ? 'checked' : '' }} disabled></td>
+                                <td>{{$album->user->email}}</td>
                                 <td>{{$album->created_at->diffForHumans()}}</td>
                                 <td>{{$album->updated_at->diffForHumans()}}</td>
                                 <td>
