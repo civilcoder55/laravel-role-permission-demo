@@ -16,12 +16,23 @@ class AlbumService
          * @var User
          */
         $user = auth()->user();
-        return $user->albums()->paginate(15);
+        return $user->albums()->cursorPaginate(15);
     }
 
     public function getPublicAlbums()
     {
         return Album::where(['private' => 0])->cursorPaginate(16);
+    }
+
+    public function getAdminStatistics()
+    {
+        $albums_count = Album::count();
+        $users_count = User::count();
+        return [
+            'albums_count' => $albums_count,
+            'users_count' => $users_count,
+
+        ];
     }
 
 
