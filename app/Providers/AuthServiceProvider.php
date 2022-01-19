@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         // register our permission gates
         Permission::all()->map(function ($permission) {
             Gate::define($permission->name, function ($user) use ($permission) {
-                return $user->super_admin ?? $user->hasPermission($permission);
+                return $user->super_admin ? true : $user->hasPermission($permission);
             });
         });
     }

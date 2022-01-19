@@ -3,7 +3,9 @@
 namespace App\Services\Admin;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserService
@@ -11,17 +13,17 @@ class UserService
 
     public function getAllUsers()
     {
-        return User::where('super_admin', 0)->cursorPaginate(16);
+        return User::where('super_admin', 0)->where('id', '!=', Auth::id())->cursorPaginate(16);
     }
 
     public function getAllUsersCount()
     {
         return User::where('super_admin', 0)->count();
     }
-    
+
     public function getAllAdmins()
     {
-        return DB::table('users');
+        return User::whereRelation('roles', 'name', '=', 'admin')->get();
     }
 
     public function getUserRolesIds($user)
@@ -43,7 +45,9 @@ class UserService
             'password' => Hash::make($request->password),
         ]);
 
-        $user->roles()->attach($request->roles);
+        if (Gate::forUser(Auth::user())->allows('edit-user-role')) {
+            $user->roles()->attach($request->roles);
+        }
     }
 
     public function updateUser($request, $user)
@@ -56,6 +60,9 @@ class UserService
             $data['password'] = Hash::make($request->password);
         }
         $user->update($data);
-        $user->roles()->sync($request->roles);
+
+        if (Gate::forUser(Auth::user())->allows('edit-user-role')) {
+            $user->roles()->sync($request->roles);
+        }
     }
 }

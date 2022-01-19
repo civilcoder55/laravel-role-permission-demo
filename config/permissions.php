@@ -9,10 +9,7 @@ return [
     'edit-album',
     'delete-album',
     'list-album',
-    'create-admin',
-    'edit-admin',
-    'delete-admin',
-    'list-admin',
+    'edit-user-role',
     'view-dashboard',
     'admin-access'
 ];

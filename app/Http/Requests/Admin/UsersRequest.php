@@ -25,7 +25,7 @@ class UsersRequest extends FormRequest
     {
         $rules = [
             'name' => ['required', 'string', 'max:255'],
-            'roles' =>  ['required', 'array', 'min:1'],
+            'roles' =>  ['array'],
             'roles.*' => 'integer'
         ];
 
