@@ -30,3 +30,14 @@ Route::group(['middleware' => 'auth', 'as' => 'user.', 'namespace' => 'User'], f
         Route::post('password', 'ProfileController@updatePassword')->name('profile.update.password');
     });
 });
+
+Route::group(['prefix'=>'admin','middleware' => 'auth', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+    Route::redirect('/', '/admin/dashboard');
+
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
+    // Route::resource('users', 'UserController');
+});
