@@ -3,22 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Admin\UserService;
 use App\Services\User\AlbumService;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    protected $service;
-
+    protected $AlbumService;
+    protected $UserService;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(AlbumService $service)
+    public function __construct(AlbumService $AlbumService, UserService $UserService)
     {
-        $this->service = $service;
+        $this->AlbumService = $AlbumService;
+        $this->UserService = $UserService;
+        $this->middleware('permission:view-dashboard', ['only' => ['index']]);
     }
 
     /**
@@ -28,7 +31,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $statistics = $this->service->getAdminStatistics();
+        $statistics =  [
+            'albums_count' => $this->AlbumService->getAlbumsCount(),
+            'users_count' => $this->UserService->getAllUsersCount(),
+        ];;
 
         return view('admin.dashboard', compact('statistics'));
     }

@@ -34,19 +34,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4">
-            <div class="stats stats-danger">
-                <h3 class="stats-title"> Open tickets </h3>
-                <div class="stats-content">
-                    <div class="stats-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="stats-data">
-                        <div class="stats-number">5</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 @endsection
