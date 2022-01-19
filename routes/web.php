@@ -31,13 +31,13 @@ Route::group(['middleware' => 'auth', 'as' => 'user.', 'namespace' => 'User'], f
     });
 });
 
-Route::group(['prefix'=>'admin','middleware' => 'auth', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','permission:admin-access'], 'as' => 'admin.', 'namespace' => 'Admin'], function () {
     Route::redirect('/', '/admin/dashboard');
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 
-    Route::resource('users', 'UserController');
-    Route::resource('roles', 'RoleController');
-    // Route::resource('users', 'UserController');
+    Route::resource('users', 'UserController', ['except' => ['show']]);
+    Route::resource('roles', 'RoleController', ['except' => ['show']]);
+    Route::resource('albums', 'AlbumController', ['except' => ['create', 'store', 'show']]);
 });
