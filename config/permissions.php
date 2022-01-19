@@ -13,4 +13,6 @@ return [
     'edit-admin',
     'delete-admin',
     'list-admin',
+    'view-dashboard',
+    'admin-access'
 ];

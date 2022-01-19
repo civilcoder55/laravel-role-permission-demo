@@ -15,8 +15,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $role = Role::create(['name' => 'user']);
-
-        $role->permissions()->attach(Permission::whereIn('name', ['create-album', 'edit-album', 'delete-album', 'list-album'])->get());
+        $admin_role = Role::create(['name' => 'admin']);
+        $admin_role->permissions()->attach(Permission::all());
     }
 }
