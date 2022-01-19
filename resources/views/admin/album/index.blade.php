@@ -20,7 +20,9 @@
                     <div class="easion-card-icon">
                         <i class="fas fa-table"></i>
                     </div>
+                    @can('create-album')
                     <a href="{{ route('user.albums.create') }}" class="btn btn-secondary btn-sm album-create-btn href-btn">Create New Album</i></a>
+                    @endcan
                 </div>
                 <div class="card-body table-responsive">
                     @if (count($albums) > 0 )
@@ -46,13 +48,18 @@
                                 <td>{{$album->created_at->diffForHumans()}}</td>
                                 <td>{{$album->updated_at->diffForHumans()}}</td>
                                 <td>
+                                    @can('edit-admin')
                                     <a href="{{ route('admin.albums.edit',$album->id) }}" class="btn btn-secondary btn-sm href-btn" title="edit album"><i class="fas fa-edit"></i></a>
+                                    @endcan
+
+                                    @can('delete-album')
                                     <button class="btn btn-secondary btn-sm" title="delete album" onclick="confirm('Are you sure to delete this album?') &&  document.getElementById('delete-album-{{$album->id}}').submit();"><i class="fas fa-trash"></i></button>
 
                                     <form id="delete-album-{{$album->id}}" action="{{ route('admin.albums.destroy',$album->id) }}" method="POST" class="d-none">
                                         @csrf
                                         @method('delete')
                                     </form>
+                                    @endcan
 
                                 </td>
                             </tr>

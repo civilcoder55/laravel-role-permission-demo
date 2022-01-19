@@ -58,6 +58,7 @@
                             <label for="password-confirm">Confirm Password</label>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
+                        @can('edit-user-role')
                         <div class="form-group">
                             @foreach ($roles as $role )
                             <div class="custom-control custom-checkbox">
@@ -72,12 +73,13 @@
                             </span>
                             @enderror
                         </div>
+                        @endcan
 
                         <button type="submit" class="btn btn-primary">Create User</button>
                     </form>
                 </div>
             </div>
-        </div>autofocus
+        </div>
     </div>
 </div>
 @endsection

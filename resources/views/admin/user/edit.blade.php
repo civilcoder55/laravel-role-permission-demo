@@ -62,7 +62,9 @@
                         <div class="form-group">
                             @foreach ($roles as $role )
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="{{$role->name}}" value="{{$role->id}}" {{in_array($role->id, $user_roles_ids) ? 'checked' : ''}}  name='roles[]'>
+                                <input type="checkbox" class="custom-control-input" id="{{$role->name}}" value="{{$role->id}}" {{in_array($role->id, $user_roles_ids) ? 'checked' : ''}}  name='roles[]' @cannot('edit-user-role')
+                                    disabled
+                                @endcannot >
                                 <label class="custom-control-label" for="{{$role->name}}">{{$role->name}}</label>
                             </div>
                             @endforeach

@@ -20,7 +20,9 @@
                     <div class="easion-card-icon">
                         <i class="fas fa-table"></i>
                     </div>
+                    @can('create-user')
                     <a href="{{ route('admin.users.create') }}" class="btn btn-secondary btn-sm album-create-btn href-btn">Create New User</i></a>
+                    @endcan
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-bordered">
@@ -49,14 +51,17 @@
                                 <td>{{$user->created_at->diffForHumans()}}</td>
                                 <td>{{$user->updated_at->diffForHumans()}}</td>
                                 <td>
+                                    @can('edit-user')
                                     <a href="{{ route('admin.users.edit',$user->id) }}" class="btn btn-secondary btn-sm href-btn" title="edit user"><i class="fas fa-edit"></i></a>
-                                    <button class="btn btn-secondary btn-sm" title="delete user" onclick="confirm('Are you sure to delete this user?') && document.getElementById('delete-user-{{$user->id}}').submit();"><i class="fas fa-trash"></i></button>
 
+                                    @endcan
+                                    @can('delete-user')
+                                    <button class="btn btn-secondary btn-sm" title="delete user" onclick="confirm('Are you sure to delete this user?') && document.getElementById('delete-user-{{$user->id}}').submit();"><i class="fas fa-trash"></i></button>
                                     <form id="delete-user-{{$user->id}}" action="{{ route('admin.users.destroy',$user->id) }}" method="POST" class="d-none">
                                         @csrf
                                         @method('delete')
                                     </form>
-
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach
