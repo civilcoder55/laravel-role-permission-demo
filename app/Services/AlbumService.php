@@ -29,6 +29,11 @@ class AlbumService
         return Album::cursorPaginate(10);
     }
 
+    public function getAllAlbumsWithUsers()
+    {
+        return Album::with('user')->cursorPaginate(10);
+    }
+
     public function getAlbumsCount()
     {
         return Album::count();

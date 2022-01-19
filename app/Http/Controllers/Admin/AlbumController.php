@@ -26,7 +26,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = $this->service->getAllAlbums();
+        $albums = $this->service->getAllAlbumsWithUsers();
 
         return view('admin.album.index', compact('albums'));
     }
