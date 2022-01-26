@@ -2,10 +2,10 @@
 
 <p align="center">
 
-  <h3 align="center">Album Task</h3>
+  <h3 align="center">Laravel role-permission simple dashboard</h3>
 
   <p align="center">
-   PHP WEB DEVELOPER ASSIGNMENT
+   simple dashboard for roles and permissions demo
   </p>
 </p>
 
