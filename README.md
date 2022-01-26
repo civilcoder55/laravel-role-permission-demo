@@ -49,6 +49,12 @@ php artisan db:seed
 http://localhost:8000
 ```
 
+## Screens
+
+<p align="center">
+  <img src="img.png">
+</p>
+
 ## USER TO DO
 
 -   [x] Registration page (Name, Email, Password).
@@ -58,11 +64,12 @@ http://localhost:8000
 -   [x] Albums page for logged user to albums management (view, add, edit, delete)
 -   [x] User could add two types of albums (public/private).
 -   [ ] User can add images to albums.
+
 ## ADMIN TO DO
 
 -   [x] Login page (Email, Password).
 -   [x] Dashboard page to show website stats (albums count, users count, etc…).
 -   [x] Roles page for roles & permissions management (view, add, edit, delete).
 -   [x] System admins page for admins management (view, add, edit, delete). [admin managment can be done on user page at role assign part for now 🤷]
--   [x] Registered users page for user management (and manage their albums). 
+-   [x] Registered users page for user management (and manage their albums).
 -   [x] Admin could delete not proper album.
